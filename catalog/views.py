@@ -4,6 +4,9 @@ from .models import Book, Author, BookInstance, Genre
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+
 def index(request):
     """View function for home page of site."""
 
@@ -57,4 +60,19 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
+    
+subject = '{}, the email subject’.format(“this can be a form field value or user info”)
+message = 'this is the message "{}"'.format(“this is any message you want to send”)
+
+user = request.user  #request was passed to the method as a parameter for the view
+user_email = user.email # pull user’s email out of the user record
+
+#try to send the e-mail – note you can send to multiple users – this just sends
+#to one user.
+try:
+    send_mail(subject, message, 'yourEmailAddress@gmail.com', [user_email])
+    sent = True
+except:
+    print("Error sending e-mail")
+
 

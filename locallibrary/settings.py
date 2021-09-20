@@ -131,7 +131,7 @@ LOGIN_REDIRECT_URL = '/'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dlanier.isqa@gmail.com'
-EMAIL_HOST_PASSWORD = 'LanierMoney1!'
+EMAIL_HOST_PASSWORD = 'Oregon09!Buddy632'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
